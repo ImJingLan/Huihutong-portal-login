@@ -36,8 +36,24 @@ https://github.com/PairZhu/HuiHuTong
 
 ## Python 版本
 
-Coming soon...
+Python 版本代码在 `login.py` 文件中。已经测试过在 WSL2 和 Windows 上可以正常运行。(需要有：`requests`)
 
+1. 同上通过抓包得到 OpenID
+
+2. 设置环境变量 OPEN_ID
+```
+ $ export OPEN_ID="your_open_id"
+ ```
+
+ 如果你在用windows，你需要用Powershell，命令如下：
+```
+ $env:OPEN_ID="your_open_id"
+```
+
+3. 运行脚本
+```
+ $ python login.py
+```
 # 注意事项:
 
 尽量不要用代理，因为代理可能会导致登录失败。
