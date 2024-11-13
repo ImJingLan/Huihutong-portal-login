@@ -16,13 +16,13 @@ def get_sa_token():
 def get_redir_url():
     try:
         resp = session.get("http://connect.rom.miui.com/generate_204", allow_redirects=False)
-    except :
-        raise Exception("Timed out. No Internet Connection")
+    except Exception as e:
+        raise Exception("Timed out. No Internet Connection", e)
     
     code = resp.status_code
     if code == 204:
         print("Already logged in. Exiting")
-        exit(0)
+        return None
     
     if code == 302:
         return resp.headers["Location"]
@@ -53,7 +53,13 @@ def do_login(redir_url, sa_token):
 
 
 if __name__ == "__main__":
-    redir_url = get_redir_url()
-    sa_token = get_sa_token()
-    do_login(redir_url, sa_token)
+    try:
+        redir_url = get_redir_url()
+        if redir_url is None:
+            exit(0)
+        sa_token = get_sa_token()
+        do_login(redir_url, sa_token)
+        
+    except Exception as e:
+        raise e
     
