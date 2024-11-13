@@ -21,7 +21,6 @@ def get_redir_url():
     
     code = resp.status_code
     if code == 204:
-        print("Already logged in. Exiting")
         return None
     
     if code == 302:
