@@ -28,14 +28,14 @@ while True:
         if redir_url is None:
             logging.info("Already logged in. Exiting")
             continue
-        logging.info("Not logged In, Got redir url", redir_url)
+        logging.info("Not logged In, Got redir url %s", redir_url)
         satoken = get_sa_token()
         logging.info("Got sa token", satoken)
         logging.info("Doing Login....")
         try:
             do_login(redir_url, satoken)
         except Exception as e:
-            logging.error("Error when Logging in, ", e)
+            logging.error("Error when Logging in, %s", e)
         finally:
             continue
         
