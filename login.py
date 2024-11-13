@@ -8,8 +8,8 @@ open_id = os.getenv("OPEN_ID")
 
 
 def get_sa_token():
-    url = f'https://api.215123.cn/web-app/auth/certificateLogin?openId={
-        open_id}'
+    url = f'https://api.215123.cn/web-app/auth/ \
+    certificateLogin?openId={open_id}'
     resp = session.get(url, )
     return resp.json()["data"]["token"]
 
